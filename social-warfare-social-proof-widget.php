@@ -53,7 +53,16 @@ class Social_warfare_social_proof_widget extends WP_Widget {
 	 */
 	public function widget( $args, $instance ) {
 		// outputs the content of the widget
-	}    
+	}
+
+    /**
+	 * Outputs the options form on admin
+	 *
+	 * @param array $instance The widget options
+	 */
+	public function form( $instance ) {
+		// outputs the options form on admin
+	}   
 
 }
 
