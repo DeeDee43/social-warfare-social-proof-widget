@@ -27,7 +27,7 @@ define( 'SW_SPW_PLUGIN_DIR', dirname( __FILE__ ) );
  */
 require_once SW_SPW_PLUGIN_DIR . '/update-checker/plugin-update-checker.php';
 $swps_github_checker = swp_PucFactory::getLatestClassVersion('PucGitHubChecker');
-$sw_SPW_update_checker = new $swpp_github_checker(
+$SW_SPW_update_checker = new $swpp_github_checker(
     'https://github.com/warfare-plugins/social-warfare-shortcodes/',
     __FILE__,
     'master'
