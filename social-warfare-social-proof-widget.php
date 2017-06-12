@@ -33,12 +33,13 @@ $sw_spw_update_checker = new $swpp_github_checker(
     'master'
 );
 
+
 class social_warfare_social_proof_widget extends WP_Widget {
 
     function sw_spw_register() {
         register_widget( 'social_warfare_social_proof_widget' );
     }
-    add_action( 'widgets_init', 'ssocial_warfare_social_proof_widget_register' );
+    add_action( 'widgets_init', 'social_warfare_social_proof_widget_register' );
 
     function __construct() {
         parent::__construct( 'social_warfare_social_proof_widget', 'Social Proof Widget' ,
