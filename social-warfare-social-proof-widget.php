@@ -33,27 +33,30 @@ $sw_spw_update_checker = new $swpp_github_checker(
     'master'
 );
 
-class sw_spw_plugin extends WP_Widget {
+class social_warfare_social_proof_widget extends WP_Widget {
+
     function sw_spw_register() {
-        register_widget( 'sw_spw_plugin' );
+        register_widget( 'social_warfare_social_proof_widget' );
     }
-    add_action( 'widgets_init', 'sw_spw_register' );
+    add_action( 'widgets_init', 'ssocial_warfare_social_proof_widget_register' );
 
     function __construct() {
-         parent::__construct(
+        parent::__construct( 'social_warfare_social_proof_widget', 'Social Proof Widget' ,
+            array (
+                'description' => ( 'A Social Warfare widget that shows sitewide shares of selected social media networks.' )
+                )
+            );
+        }
 
-        // base ID of the widget
-        'sw_spw_plugin',
+    /*function form( $instance ) {
+    }
 
-        // name of the widget
-        __( 'Social Proof Widget' ),
+    function update( $new_instance, $old_instance ) {
+    }
 
-        // widget options
-        array (
-            'description' => __( 'A Social Warfare widget that shows sitewide shares of selected social media networks.' )
-        )
-    );
+    function widget( $args, $instance ) {
 
+    }*/
 
 
 
