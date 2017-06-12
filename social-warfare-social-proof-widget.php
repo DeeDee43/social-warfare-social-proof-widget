@@ -2,7 +2,7 @@
 /**
  * Plugin Name: Social Warfare - Social Proof Widget
  * Plugin URI:  http://warfareplugins.com
- * Description: A plugin that adds fun and useful shortcodes for the Social Warfare plugin.
+ * Description: A Social Warfare widget that shows sitewide shares of selected social media networks.
  * Version:     1.0.0
  * Author:      Warfare Plugins
  * Author URI:  http://warfareplugins.com
@@ -34,11 +34,27 @@ $sw_spw_update_checker = new $swpp_github_checker(
 );
 
 class sw_spw_plugin extends WP_Widget {
-    public function __construct() {
-    $widget_options = array(
-        'classname' => 'sw_spw_plugin',
-        'description' => 'This is the Social Warfare Social Proof Widget',
-    );
-    parent::__construct( 'sw_spw_plugin', 'Social Proof Widget', $widget_options );
+    function sw_spw_register() {
+        register_widget( 'sw_spw_plugin' );
     }
+    add_action( 'widgets_init', 'sw_spw_register' );
+
+    function __construct() {
+         parent::__construct(
+
+        // base ID of the widget
+        'sw_spw_plugin',
+
+        // name of the widget
+        __( 'Social Proof Widget' ),
+
+        // widget options
+        array (
+            'description' => __( 'A Social Warfare widget that shows sitewide shares of selected social media networks.' )
+        )
+    );
+
+
+
+
 }
