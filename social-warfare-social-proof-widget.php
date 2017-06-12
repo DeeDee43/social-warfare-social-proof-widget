@@ -45,15 +45,15 @@ class Social_warfare_social_proof_widget extends WP_Widget {
         parent::__construct( 'Social_warfare_social_proof_widget', 'Social Proof Widget', $widget_options);
     }
 
-    /*
-    function form( $instance ) {
-    }
-
-    function update( $new_instance, $old_instance ) {
-    }
-
-    function widget( $args, $instance ) {
-    }*/
+    /**
+	 * Outputs the content of the widget
+	 *
+	 * @param array $args
+	 * @param array $instance
+	 */
+	public function widget( $args, $instance ) {
+		// outputs the content of the widget
+	}    
 
 }
 
