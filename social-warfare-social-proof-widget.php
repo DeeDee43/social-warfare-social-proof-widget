@@ -38,7 +38,7 @@ $sw_spw_update_checker = new $swpp_github_checker(
  */
 class Social_warfare_social_proof_widget extends WP_Widget {
     /**
-	 * Sets up the widgets name and other options
+	 * Sets up the widget's name and other options
 	 */
     function __construct() {
         $widget_options = array (
@@ -56,6 +56,13 @@ class Social_warfare_social_proof_widget extends WP_Widget {
 	 */
 	public function widget( $args, $instance ) {
 		// outputs the content of the widget
+        /*echo $args['before_widget'];
+        if ( ! empty( $instance['title'] ) ) {
+            echo $args['before_title'] . apply_filters( 'widget_title', $instance['title'] ) . $args['after_title'];
+        }
+		echo esc_html__( 'Hello, World!', 'text_domain' );
+		echo $args['after_widget'];
+        */
 	}
 
     /**
@@ -65,17 +72,32 @@ class Social_warfare_social_proof_widget extends WP_Widget {
 	 */
 	public function form( $instance ) {
 		// outputs the options form on admin
+        /*$title = ! empty( $instance['title'] ) ? $instance['title'] : esc_html__( 'New title', 'text_domain' );
+		?>
+		<p>
+		<label for="<?php echo esc_attr( $this->get_field_id( 'title' ) ); ?>"><?php esc_attr_e( 'Title:', 'text_domain' ); ?></label>
+		<input class="widefat" id="<?php echo esc_attr( $this->get_field_id( 'title' ) ); ?>" name="<?php echo esc_attr( $this->get_field_name( 'title' ) ); ?>" type="text" value="<?php echo esc_attr( $title ); ?>">
+		</p>
+		<?php
+        */
 	}
 
     /**
 	 * Processing widget options on save
 	 *
-	 * @param array $new_instance The new options
-	 * @param array $old_instance The previous options
+	 * @param array $new_instance Values just sent to be saved.
+	 * @param array $old_instance Previous saved values from database
+	 *
+	 * @return array Update safe values to be saved.
 	 */
 	public function update( $new_instance, $old_instance ) {
 		// processes widget options to be saved
-	}
+        /*$instance = array();
+		$instance['title'] = ( ! empty( $new_instance['title'] ) ) ? strip_tags( $new_instance['title'] ) : '';
+
+		return $instance;
+        */
+    }
 
 }
 
