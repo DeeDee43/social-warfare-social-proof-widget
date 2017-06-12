@@ -33,6 +33,9 @@ $sw_spw_update_checker = new $swpp_github_checker(
     'master'
 );
 
+/**
+ * The class to create a new widget
+ */
 class Social_warfare_social_proof_widget extends WP_Widget {
     function __construct() {
         $widget_options = array (
@@ -54,6 +57,9 @@ class Social_warfare_social_proof_widget extends WP_Widget {
 
 }
 
+/**
+ * Function to register the widget with WordPress
+ */
 function register_social_warfare_social_proof_widget() {
 
     register_widget( 'Social_warfare_social_proof_widget' );
