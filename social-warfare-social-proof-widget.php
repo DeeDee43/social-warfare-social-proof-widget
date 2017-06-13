@@ -53,7 +53,6 @@ class Social_Warfare_social_proof_widget extends WP_Widget {
 	 * @param array $args Widget arguments.
 	 * @param array $instance Saved values from database.
 	 */
-
     function widget( $args, $instance ) {
         echo args['before_widget'];
         if( ! empty( $instance['title'] )){
@@ -64,6 +63,21 @@ class Social_Warfare_social_proof_widget extends WP_Widget {
         echo esc_html__( 'Hello,World!', 'text_domain' );
         echo $args['after_widget'];
     }//close widget()
+
+    /**
+	 * Back-end widget form.
+	 *
+	 * @param array $instance Previously saved values from database.
+	 */
+	function form( $instance ) {
+        $title = ! empty( $instance['title'] ) ? $instance['title'] : esc_html__( 'New title', 'text_domain' );
+		?>
+		<p>
+		<label for="<?php echo esc_attr( $this->get_field_id( 'title' ) ); ?>"><?php esc_attr_e( 'Title:', 'text_domain' ); ?></label>
+		<input class="widefat" id="<?php echo esc_attr( $this->get_field_id( 'title' ) ); ?>" name="<?php echo esc_attr( $this->get_field_name( 'title' ) ); ?>" type="text" value="<?php echo esc_attr( $title ); ?>">
+		</p>
+		<?php 
+    }//close form()
 }//class close
 
 add_action( 'widgets_init', function(){
