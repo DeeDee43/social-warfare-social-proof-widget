@@ -42,8 +42,12 @@ class Social_Warfare_social_proof_widget extends WP_Widget {
     function __construct(){
         $options = array(
             'classname' => 'social_warfare_social_proof_widget',
-            'description' => 'A social warfare widget'
+            'description' => 'Shows sitewide shares of selected social media'
         );
         parent::__construct( 'social_warfare_social_proof_widget', 'Social Proof widget', $options );
     }//close construct
 }//class close
+
+add_action( 'widgets_init', function(){
+	register_widget( 'Social_Warfare_social_proof_widget' );
+});
