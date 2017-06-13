@@ -35,5 +35,11 @@ $sw_spw_update_checker = new $swpp_github_checker(
 );
 
 class Social_Warfare_social_proof_widget extends WP_Widget {
-    
+
+    /**
+     * Sets up Widget name and starting options
+     */
+    function __construct(){
+
+    }//close construct
 }//class close
