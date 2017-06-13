@@ -19,3 +19,10 @@ define( 'SW_SPW_VERSION' , '1.0.0' );
 define( 'SW_SPW_PLUGIN_FILE', __FILE__ );
 define( 'SW_SPW_PLUGIN_URL', untrailingslashit( plugin_dir_url( __FILE__ ) ) );
 define( 'SW_SPW_PLUGIN_DIR', dirname( __FILE__ ) );
+
+/**
+ * The Plugin Update checker
+ *
+ * @since 2.0.0
+ * @access public
+ */
