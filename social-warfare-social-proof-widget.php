@@ -26,13 +26,13 @@ define( 'SW_SPW_PLUGIN_DIR', dirname( __FILE__ ) );
  * @since 2.0.0
  * @access public
  */
-require_once SW_SPW_PLUGIN_DIR . '/update-checker/plugin-update-checker.php';
+/*require_once SW_SPW_PLUGIN_DIR . '/update-checker/plugin-update-checker.php';
 $sw_spw_github_checker = swp_PucFactory::getLatestClassVersion('PucGitHubChecker');
 $sw_spw_update_checker = new $swpp_github_checker(
     'https://github.com/warfare-plugins/social-warfare-social-proof-widget/',
     __FILE__,
     'master'
-);
+);*/
 
 class Social_Warfare_social_proof_widget extends WP_Widget {
 
@@ -40,6 +40,10 @@ class Social_Warfare_social_proof_widget extends WP_Widget {
      * Sets up Widget name and starting options
      */
     function __construct(){
-
+        $options = array(
+            'classname' => 'social_warfare_social_proof_widget',
+            'description' => 'A social warfare widget'
+        );
+        parent::__construct( 'social_warfare_social_proof_widget', 'Social Proof widget', $options );
     }//close construct
 }//class close
