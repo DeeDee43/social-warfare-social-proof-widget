@@ -60,10 +60,7 @@ class Social_Warfare_social_proof_widget extends WP_Widget {
                 apply_filters( 'widget_title', $instance['title']) .
                 $args['after_title'];
         }//close if()
-
-        if( defined('SWP_VERSION') ){
-            
-        }//close if
+        echo apply_filters('widget_categories', $instance['dropdown']);
 
         echo $args['after_widget'];
     }//close widget()
@@ -81,6 +78,13 @@ class Social_Warfare_social_proof_widget extends WP_Widget {
 		<input class="widefat" id="<?php echo esc_attr( $this->get_field_id( 'title' ) ); ?>" name="<?php echo esc_attr( $this->get_field_name( 'title' ) ); ?>" type="text" value="<?php echo esc_attr( $title ); ?>">
 		</p>
 		<?php
+        $networks = ! empty( $instance['dropdown']) || $instance['dropdown'];
+        ?>
+        <p>
+		<label for="<?php echo esc_attr( $this->get_field_id( 'dropdown' ) ); ?>"><?php esc_attr_e( 'Networks:', 'text_domain' ); ?></label>
+		<input class="widefat" id="<?php echo esc_attr( $this->get_field_id( 'categories' ) ); ?>" name="<?php echo esc_attr( $this->get_field_name( 'dropdown' ) ); ?>" type="dropdown" value="<?php echo esc_attr( $networks ); ?>">
+		</p>
+        <?php
     }//close form()
 
     /**
