@@ -36,17 +36,18 @@ $sw_spw_update_checker = new $sw_spw_github_checker(
 /**
  * The class to create a new widget
  */
-class Social_warfare_social_proof_widget extends WP_Widget {
+
+//class Social_warfare_social_proof_widget extends WP_Widget {
     /**
 	 * Sets up the widget's name and other options
 	 */
-    function __construct() {
-        $widget_options = array (
-            'classname'=> 'social_warfare_social_proof_widget'
-            'description' => 'A Social Warfare widget that shows sitewide shares of selected social media networks.'
+    //function __construct() {
+        //$widget_options = array (
+            //'classname'=> 'social_warfare_social_proof_widget'
+            //'description' => 'A Social Warfare widget that shows sitewide shares of selected social media networks.'
         );
-        parent::__construct( 'Social_warfare_social_proof_widget', 'Social Proof Widget', $widget_options);
-    }
+        //parent::__construct( 'Social_warfare_social_proof_widget', 'Social Proof Widget', $widget_options );
+    //}
 
     /**
 	 * Outputs the content of the widget
@@ -54,7 +55,7 @@ class Social_warfare_social_proof_widget extends WP_Widget {
 	 * @param array $args
 	 * @param array $instance
 	 */
-	public function widget( $args, $instance ) {
+	//public function widget( $args, $instance ) {
 		// outputs the content of the widget
         /*echo $args['before_widget'];
         if ( ! empty( $instance['title'] ) ) {
@@ -63,14 +64,14 @@ class Social_warfare_social_proof_widget extends WP_Widget {
 		echo esc_html__( 'Hello, World!', 'text_domain' );
 		echo $args['after_widget'];
         */
-	}
+//	}
 
     /**
 	 * Outputs the options form on admin
 	 *
 	 * @param array $instance The widget options
 	 */
-	public function form( $instance ) {
+	//public function form( $instance ) {
 		// outputs the options form on admin
         /*$title = ! empty( $instance['title'] ) ? $instance['title'] : esc_html__( 'New title', 'text_domain' );
 		?>
@@ -80,7 +81,7 @@ class Social_warfare_social_proof_widget extends WP_Widget {
 		</p>
 		<?php
         */
-	}
+    //}
 
     /**
 	 * Processing widget options on save
@@ -90,24 +91,24 @@ class Social_warfare_social_proof_widget extends WP_Widget {
 	 *
 	 * @return array Update safe values to be saved.
 	 */
-	public function update( $new_instance, $old_instance ) {
+//	public function update( $new_instance, $old_instance ) {
 		// processes widget options to be saved
         /*$instance = array();
 		$instance['title'] = ( ! empty( $new_instance['title'] ) ) ? strip_tags( $new_instance['title'] ) : '';
 
 		return $instance;
         */
-    }
+//    }
 
-}
+//}//close class
 
 /**
  * Function to register the widget with WordPress
  */
-function register_social_warfare_social_proof_widget() {
+//function resgister_social_proof_widget() {
 
-    register_widget( 'Social_warfare_social_proof_widget' );
+    //register_widget( 'Social_warfare_social_proof_widget' );
 
-}
+//}
 
-add_action( 'widgets_init', 'register_social_warfare_social_proof_widget' );
+//add_action( 'widgets_init', 'register_social_proof_widget' );
