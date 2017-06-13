@@ -25,13 +25,13 @@ define( 'SW_SPW_PLUGIN_DIR', dirname( __FILE__ ) );
  * @since 2.0.0
  * @access public
  */
-require_once SW_SPW_PLUGIN_DIR . '/update-checker/plugin-update-checker.php';
+/*require_once SW_SPW_PLUGIN_DIR . '/update-checker/plugin-update-checker.php';
 $sw_spw_github_checker = swp_PucFactory::getLatestClassVersion('PucGitHubChecker');
 $sw_spw_update_checker = new $sw_spw_github_checker(
     'https://github.com/warfare-plugins/social-warfare-social-proof-widget/',
     __FILE__,
     'master'
-);
+);*/
 
 /**
  * The class to create a new widget
