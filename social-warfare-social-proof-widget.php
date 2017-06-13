@@ -15,3 +15,7 @@ defined( 'WPINC' ) || die;
  * Define plugin constants for use throughout the plugin (Version and Directories)
  *
  */
+define( 'SW_SPW_VERSION' , '1.0.0' );
+define( 'SW_SPW_PLUGIN_FILE', __FILE__ );
+define( 'SW_SPW_PLUGIN_URL', untrailingslashit( plugin_dir_url( __FILE__ ) ) );
+define( 'SW_SPW_PLUGIN_DIR', dirname( __FILE__ ) );
