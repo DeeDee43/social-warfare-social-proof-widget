@@ -60,9 +60,31 @@ class Social_Warfare_social_proof_widget extends WP_Widget {
                 apply_filters( 'widget_title', $instance['title']) .
                 $args['after_title'];
         }//close if()
-        echo apply_filters('widget_categories', $instance['dropdown']);
-
+        //twitter sitewide shares
+        if(IsChecked("core","twitter")){
+            echo swps_sitewide_twitter_shares();
+        }
+        //facebook sitewide shares
+        //pinterest sitewide shares
+        //googleplus sitewide shares
+        //linkedIn sitewide shares
+        //stumbleupon sitewide shares
+        //buffer sitewide shares
+        //hacker news sitewide shares
+        //tumblr sitewide shares
+        //yummly sitewide shares
         echo $args['after_widget'];
+
+        function IsChecked($chkname,$value){
+            if( !empty($_POST[$chkname])){
+                foreach($_POST[$chkname] as $chkval){
+                    if($chkval == $value){
+                        return true;
+                    }
+                }
+            }return false;
+        }
+
     }//close widget()
 
     /**
@@ -72,40 +94,42 @@ class Social_Warfare_social_proof_widget extends WP_Widget {
 	 */
 	function form( $instance ) {
         $title = ! empty( $instance['title'] ) ? $instance['title'] : esc_html__( 'New title', 'text_domain' );
+        $core[] = $instance['core[]'];
+        $pro[] = $instance['pro[]'];
 		?>
 		<p>
-		<label for="<?php echo esc_attr( $this->get_field_id( 'title' ) ); ?>"><?php esc_attr_e( 'Title:', 'text_domain' ); ?></label>
+		<label for="<?php
+        echo esc_attr( $this->get_field_id( 'title' ) ); ?>">
+        <?php esc_attr_e( 'Title:', 'text_domain' ); ?>
+        </label>
 		<input class="widefat" id="<?php echo esc_attr( $this->get_field_id( 'title' ) ); ?>" name="<?php echo esc_attr( $this->get_field_name( 'title' ) ); ?>" type="text" value="<?php echo esc_attr( $title ); ?>">
 		</p>
-		<?php
 
+        <p>Check networks to show sitewide shares.</p>
+        <!--core-->
+        <?php
+        if(defined('SWP_VERSION')){
         ?>
-		<form>
-            <p>Check networks to show sitewide shares.</p>
-            <!--core-->
-            <?php
-                if(defined('SWP_VERSION')){
-             ?>
-                <input type="checkbox" name="core[]" id="twitter" value="twitter"><label for="twitter"> Twitter</label><br>
-                <input type="checkbox" name="core[]" id="facebook" value="facebook"><label for="facebook"> Facebook</label><br>
-                <input type="checkbox" name="core[]" id="pintrest" value="pintrest"><label for="pintrest"> Pintrest</label><br>
-                <input type="checkbox" name="core[]" id="googlePlus" value="googlePlus"><label for="googlePlus"> Google+</label><br>
-                <input type="checkbox" name="core[]" id="linkedIn" value="linkedIn"><label for="linkedIn"> LinkedIn</label><br>
-                <input type="checkbox" name="core[]" id="stumbleupon" value="stumbleupon"><label for="stumbleupon"> StumbleUpon</label><br>
-            <?php
-                }
-                if(defined('SWPP_VERSION')){
-            ?>
-            <!--pro-->
-            <input type="checkbox" name="pro[]" id="buffer" value="buffer"><label for="buffer"> Buffer</label><br>
-            <input type="checkbox" name="pro[]" id="hacker_news" value="hacker_news"><label for="hacker_news"> Hacker News</label><br>
-            <input type="checkbox" name="pro[]" id="reddit" value="reddit"><label for="reddit"> Reddit</label><br>
-            <input type="checkbox" name="pro[]" id="tumblr" value="tumblr"><label for="tumblr"> Tumblr</label><br>
-            <input type="checkbox" name="pro[]" id="yummly" value="yummly"><label for="yummly"> Yummly</label><br>
-            <?php
-                }
-             ?>
-        </form>
+        <input type="checkbox" name="<?php echo esc_attr( $this->get_field_name( 'core[]' ) ); ?>" id="<?php echo esc_attr( $this->get_field_id( 'twitter' ) ); ?>" value="<?php echo esc_attr( $core['twitter']='twitter' ); ?>">
+            <label for="<?php echo esc_attr( $this->get_field_id( 'twitter' ) ); ?>"> <?php esc_attr_e('Twitter','text_domain');?></label><br>
+        <input type="checkbox" name="core[]" id="facebook" value="facebook"><label for="facebook"> Facebook</label><br>
+        <input type="checkbox" name="core[]" id="pintrest" value="pintrest"><label for="pintrest"> Pintrest</label><br>
+        <input type="checkbox" name="core[]" id="googlePlus" value="googlePlus"><label for="googlePlus"> Google+</label><br>
+        <input type="checkbox" name="core[]" id="linkedIn" value="linkedIn"><label for="linkedIn"> LinkedIn</label><br>
+        <input type="checkbox" name="core[]" id="stumbleupon" value="stumbleupon"><label for="stumbleupon"> StumbleUpon</label><br>
+        <?php
+        }
+        if(defined('SWPP_VERSION')){
+        ?>
+        <!--pro-->
+        <input type="checkbox" name="pro[]" id="buffer" value="buffer"><label for="buffer"> Buffer</label><br>
+        <input type="checkbox" name="pro[]" id="hacker_news" value="hacker_news"><label for="hacker_news"> Hacker News</label><br>
+        <input type="checkbox" name="pro[]" id="reddit" value="reddit"><label for="reddit"> Reddit</label><br>
+        <input type="checkbox" name="pro[]" id="tumblr" value="tumblr"><label for="tumblr"> Tumblr</label><br>
+        <input type="checkbox" name="pro[]" id="yummly" value="yummly"><label for="yummly"> Yummly</label><br>
+        <?php
+        }
+        ?>
         <?php
     }//close form()
 
