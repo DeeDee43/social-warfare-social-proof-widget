@@ -82,12 +82,30 @@ class Social_Warfare_social_proof_widget extends WP_Widget {
         ?>
 		<form>
             <p>Check networks to show sitewide shares.</p>
+            <!--core-->
+            <?php
+                if(defined('SWP_VERSION')){
+             ?>
+                <input type="checkbox" name="core[]" id="twitter" value="twitter"><label for="twitter"> Twitter</label><br>
+                <input type="checkbox" name="core[]" id="facebook" value="facebook"><label for="facebook"> Facebook</label><br>
+                <input type="checkbox" name="core[]" id="pintrest" value="pintrest"><label for="pintrest"> Pintrest</label><br>
+                <input type="checkbox" name="core[]" id="googlePlus" value="googlePlus"><label for="googlePlus"> Google+</label><br>
+                <input type="checkbox" name="core[]" id="linkedIn" value="linkedIn"><label for="linkedIn"> LinkedIn</label><br>
+                <input type="checkbox" name="core[]" id="stumbleupon" value="stumbleupon"><label for="stumbleupon"> StumbleUpon</label><br>
+            <?php
+                }
+                if(defined('SWPP_VERSION')){
+            ?>
+            <!--pro-->
             <input type="checkbox" name="core[]" id="twitter" value="twitter"><label for="twitter"> Twitter</label><br>
             <input type="checkbox" name="core[]" id="facebook" value="facebook"><label for="facebook"> Facebook</label><br>
             <input type="checkbox" name="core[]" id="pintrest" value="pintrest"><label for="pintrest"> Pintrest</label><br>
             <input type="checkbox" name="core[]" id="googlePlus" value="googlePlus"><label for="googlePlus"> Google+</label><br>
             <input type="checkbox" name="core[]" id="linkedIn" value="linkedIn"><label for="linkedIn"> LinkedIn</label><br>
             <input type="checkbox" name="core[]" id="stumbleupon" value="stumbleupon"><label for="stumbleupon"> StumbleUpon</label><br>
+            <?php
+                }
+             ?>
         </form>
         <?php
     }//close form()
