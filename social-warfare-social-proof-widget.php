@@ -97,12 +97,11 @@ class Social_Warfare_social_proof_widget extends WP_Widget {
                 if(defined('SWPP_VERSION')){
             ?>
             <!--pro-->
-            <input type="checkbox" name="core[]" id="twitter" value="twitter"><label for="twitter"> Twitter</label><br>
-            <input type="checkbox" name="core[]" id="facebook" value="facebook"><label for="facebook"> Facebook</label><br>
-            <input type="checkbox" name="core[]" id="pintrest" value="pintrest"><label for="pintrest"> Pintrest</label><br>
-            <input type="checkbox" name="core[]" id="googlePlus" value="googlePlus"><label for="googlePlus"> Google+</label><br>
-            <input type="checkbox" name="core[]" id="linkedIn" value="linkedIn"><label for="linkedIn"> LinkedIn</label><br>
-            <input type="checkbox" name="core[]" id="stumbleupon" value="stumbleupon"><label for="stumbleupon"> StumbleUpon</label><br>
+            <input type="checkbox" name="pro[]" id="buffer" value="buffer"><label for="buffer"> Buffer</label><br>
+            <input type="checkbox" name="pro[]" id="hacker_news" value="hacker_news"><label for="hacker_news"> Hacker News</label><br>
+            <input type="checkbox" name="pro[]" id="reddit" value="reddit"><label for="reddit"> Reddit</label><br>
+            <input type="checkbox" name="pro[]" id="tumblr" value="tumblr"><label for="tumblr"> Tumblr</label><br>
+            <input type="checkbox" name="pro[]" id="yummly" value="yummly"><label for="yummly"> Yummly</label><br>
             <?php
                 }
              ?>
