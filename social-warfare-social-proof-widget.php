@@ -78,12 +78,17 @@ class Social_Warfare_social_proof_widget extends WP_Widget {
 		<input class="widefat" id="<?php echo esc_attr( $this->get_field_id( 'title' ) ); ?>" name="<?php echo esc_attr( $this->get_field_name( 'title' ) ); ?>" type="text" value="<?php echo esc_attr( $title ); ?>">
 		</p>
 		<?php
-        $networks = ! empty( $instance['dropdown']) || $instance['dropdown'];
+
         ?>
-        <p>
-		<label for="<?php echo esc_attr( $this->get_field_id( 'dropdown' ) ); ?>"><?php esc_attr_e( 'Networks:', 'text_domain' ); ?></label>
-		<input class="widefat" id="<?php echo esc_attr( $this->get_field_id( 'categories' ) ); ?>" name="<?php echo esc_attr( $this->get_field_name( 'dropdown' ) ); ?>" type="dropdown" value="<?php echo esc_attr( $networks ); ?>">
-		</p>
+		<form>
+            <p>Check all the languages you have proficiency in.</p>
+            <input type="checkbox" name="core[]" id="twitter" value="twitter"><label for="twitter"> Twitter</label><br>
+            <input type="checkbox" name="core[]" id="facebook" value="facebook"><label for="facebook"> Facebook</label><br>
+            <input type="checkbox" name="core[]" id="pintrest" value="pintrest"><label for="pintrest"> Pintrest</label><br>
+            <input type="checkbox" name="core[]" id="googlePlus" value="googlePlus"><label for="googlePlus"> Google+</label><br>
+            <input type="checkbox" name="core[]" id="linkedIn" value="linkedIn"><label for="linkedIn"> LinkedIn</label><br>
+            <input type="checkbox" name="core[]" id="stumbleupon" value="stumbleupon"><label for="stumbleupon"> StumbleUpon</label><br>
+        </form> 
         <?php
     }//close form()
 
