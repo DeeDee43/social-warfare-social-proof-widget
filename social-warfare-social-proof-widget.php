@@ -54,36 +54,12 @@ class Social_Warfare_social_proof_widget extends WP_Widget {
 	 * @param array $instance Saved values from database.
 	 */
     function widget( $args, $instance ) {
-        echo args['before_widget'];
-        if( ! empty( $instance['title'] )){
-            echo $args['before_title'] .
-                apply_filters( 'widget_title', $instance['title']) .
-                $args['after_title'];
-        }//close if()
-        //twitter sitewide shares
-        if(IsChecked("core","twitter")){
-            echo swps_sitewide_twitter_shares();
-        }
-        //facebook sitewide shares
-        //pinterest sitewide shares
-        //googleplus sitewide shares
-        //linkedIn sitewide shares
-        //stumbleupon sitewide shares
-        //buffer sitewide shares
-        //hacker news sitewide shares
-        //tumblr sitewide shares
-        //yummly sitewide shares
-        echo $args['after_widget'];
+        echo args['before_widget']; .
+        $title = apply_filters( 'widget_title', $instance['title']) .
+        $args['after_title'];
 
-        function IsChecked($chkname,$value){
-            if( !empty($_POST[$chkname])){
-                foreach($_POST[$chkname] as $chkval){
-                    if($chkval == $value){
-                        return true;
-                    }
-                }
-            }return false;
-        }
+
+        echo $args['after_widget'];
 
     }//close widget()
 
@@ -94,8 +70,7 @@ class Social_Warfare_social_proof_widget extends WP_Widget {
 	 */
 	function form( $instance ) {
         $title = ! empty( $instance['title'] ) ? $instance['title'] : esc_html__( 'New title', 'text_domain' );
-        $core[] = $instance['core[]'];
-        $pro[] = $instance['pro[]'];
+
 		?>
 		<p>
 		<label for="<?php
