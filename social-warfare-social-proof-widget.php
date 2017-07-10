@@ -43,11 +43,14 @@ class Social_warfare_social_proof_widget extends WP_Widget {
 	}
 
 	function widget( $args, $instance ) {
-		// Widget output
+		extract ($args);
+        $title = apply_filters( 'widget_title', $instance['title'] );
 	}
 
 	function update( $new_instance, $old_instance ) {
-		// Save widget options
+		$instance = $old_instance;
+        $instance['title'] = strip_tags($new_instance['title']);
+        return $instance;
 	}
 
 	function form( $instance ) {
@@ -55,8 +58,8 @@ class Social_warfare_social_proof_widget extends WP_Widget {
 	}
 }
 
-function myplugin_register_widgets() {
-	register_widget( 'MyNewWidget' );
+function social_proof_widget_register_widgets() {
+	register_widget( 'Social_warfare_social_proof_widget' );
 }
 
-add_action( 'widgets_init', 'myplugin_register_widgets' );
+add_action( 'widgets_init', 'social_proof_widget_register_widgets' );
