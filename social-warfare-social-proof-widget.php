@@ -35,11 +35,11 @@ $sw_spw_update_checker = new $swpp_github_checker(
 );*/
 
 
-class MyNewWidget extends WP_Widget {
+class Social_warfare_social_proof_widget extends WP_Widget {
 
 	function __construct() {
 		// Instantiate the parent object
-		parent::__construct( false, 'My New Widget Title' );
+		parent::__construct( false, 'Social Warfare - Social Proof Widget' );
 	}
 
 	function widget( $args, $instance ) {
