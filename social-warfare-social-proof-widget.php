@@ -45,13 +45,14 @@ class Social_warfare_social_proof_widget extends WP_Widget {
 	function widget( $args, $instance ) {
 		extract ($args);
         $title = apply_filters( 'widget_title', $instance['title'] );
-
+		$icons_array = apply_filters( 'swp_button_options' , $icons_array );
 		//$options = get_option('')
 	}
 
 	function update( $new_instance, $old_instance ) {
 		$instance = $old_instance;
         $instance['title'] = strip_tags($new_instance['title']);
+		//$instance['icons_array'] = strip_tags($new_instance['icons_array']);
         return $instance;
 	}
 
