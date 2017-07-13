@@ -45,6 +45,8 @@ class Social_warfare_social_proof_widget extends WP_Widget {
 	function widget( $args, $instance ) {
 		extract ($args);
         $title = apply_filters( 'widget_title', $instance['title'] );
+
+		//$options = get_option('')
 	}
 
 	function update( $new_instance, $old_instance ) {
@@ -55,6 +57,15 @@ class Social_warfare_social_proof_widget extends WP_Widget {
 
 	function form( $instance ) {
 		// Output admin widget options form
+		$title = ! empty( $instance['title'] ) ? $instance['title'] : 	esc_html__( 'New title', 'text_domain' );
+		?>
+		<p>
+			<label for="<?php echo esc_attr( $this->get_field_id( 'title' ) ); ?>">
+				<?php esc_attr_e( 'Title:', 'text_domain' ); ?>
+			</label>
+			<input class="widefat" id="<?php echo esc_attr( $this->get_field_id( 'title' ) ); ?>" name="<?php echo esc_attr( $this->get_field_name( 'title' ) ); ?>" type="text" value="<?php echo esc_attr( $title ); ?>">
+		</p>
+		<?php
 	}
 }
 
