@@ -46,13 +46,15 @@ class Social_warfare_social_proof_widget extends WP_Widget {
 		extract ($args);
         $title = apply_filters( 'widget_title', $instance['title'] );
 		$icons_array = apply_filters( 'swp_button_options' , $icons_array );
+
+
 		//$options = get_option('')
 	}
+
 
 	function update( $new_instance, $old_instance ) {
 		$instance = $old_instance;
         $instance['title'] = strip_tags($new_instance['title']);
-		//$instance['icons_array'] = strip_tags($new_instance['icons_array']);
         return $instance;
 	}
 
@@ -61,10 +63,15 @@ class Social_warfare_social_proof_widget extends WP_Widget {
 		$title = ! empty( $instance['title'] ) ? $instance['title'] : 	esc_html__( 'New title', 'text_domain' );
 		?>
 		<p>
-			<label for="<?php echo esc_attr( $this->get_field_id( 'title' ) ); ?>">
+			<label for = "<?php echo esc_attr( $this->get_field_id( 'title' ) ); ?>">
 				<?php esc_attr_e( 'Title:', 'text_domain' ); ?>
 			</label>
 			<input class="widefat" id="<?php echo esc_attr( $this->get_field_id( 'title' ) ); ?>" name="<?php echo esc_attr( $this->get_field_name( 'title' ) ); ?>" type="text" value="<?php echo esc_attr( $title ); ?>">
+
+		</p>
+		<p>
+				<label> Pick a Network: </label>
+			
 		</p>
 		<?php
 	}
