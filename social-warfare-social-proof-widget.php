@@ -46,9 +46,14 @@ class Social_warfare_social_proof_widget extends WP_Widget {
 		extract ($args);
         $title = apply_filters( 'widget_title', $instance['title'] );
 		$icons_array = apply_filters( 'swp_button_options' , $icons_array );
+		//var_dump($icons_array);
 
-
-		//$options = get_option('')
+		foreach( $icons_array[content] as $button ){
+			if($button[defalt] || $button[premium]){
+				$networks() = $button[content];
+			}
+		}
+		var_dump($networks);
 	}
 
 
@@ -71,7 +76,7 @@ class Social_warfare_social_proof_widget extends WP_Widget {
 		</p>
 		<p>
 				<label> Pick a Network: </label>
-			
+				<select
 		</p>
 		<?php
 	}
