@@ -50,7 +50,7 @@ class Social_warfare_social_proof_widget extends WP_Widget {
 
 		foreach( $icons_array[content] as $button ){
 			if($button[defalt] || $button[premium]){
-				$networks() = $button[content];
+				$networks = array($button[content]); //does this need to be global to use in form function?
 			}
 		}
 		var_dump($networks);
