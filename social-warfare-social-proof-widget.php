@@ -65,9 +65,6 @@ class Social_warfare_social_proof_widget extends WP_Widget {
 
 		$icons_array = apply_filters( 'swp_button_options' , $icons_array );
 
-
-
-
 		?>
 		<p>
 			<label for = "<?php echo esc_attr( $this->get_field_id( 'title' ) ); ?>">
@@ -79,22 +76,22 @@ class Social_warfare_social_proof_widget extends WP_Widget {
 		<p>
 				<label> Pick a Network: </label>
 				<?php
-				for( $i = 1; $i <= count( $icons_array['content'] ); $i++ ){
+				foreach( $icons_array['content'] as $button ){
 
-				if( $icons_array['content'][$i-1]['defalt'] || $icons_array['content'][$i]['premium'] ) {
+				if( $icons_array['content'][$button]['defalt'] || $icons_array['content'][$button]['premium'] ) {
 					?> <input
 						class="widefat"
-						id="<?php $icons_array['content'][$i]; ?>"
-						name="<?php $icons_array['content'][$i]['content']; ?>" 
-						type="<?php $icons_array['content'][$i]['type']; ?>"
+						id="<?php $icons_array['content'][$button]; ?>"
+						name="<?php $icons_array['content'][$button]['content']; ?>"
+						type="<?php $icons_array['content'][$button]['type']; ?>"
 						>
 					<?php
-					echo $icons_array['content'][$i]['content'];
-					echo "<br />";
-					?>
+					echo $icons_array['content'][$button]['content'];
+					echo "<br />";?>
+
 				}
 
-				};
+			};
 
 
 		</p>
