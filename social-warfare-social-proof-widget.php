@@ -45,8 +45,8 @@ class Social_warfare_social_proof_widget extends WP_Widget {
 	function widget( $args, $instance ) {
 		extract ($args);
         $title = apply_filters( 'widget_title', $instance['title'] );
-		$icons_array = apply_filters( 'swp_button_options' , $icons_array );
-		var_dump($icons_array);
+
+
 
 
 	}
@@ -62,6 +62,17 @@ class Social_warfare_social_proof_widget extends WP_Widget {
 	function form( $instance ) {
 		// Output admin widget options form
 		$title = ! empty( $instance['title'] ) ? $instance['title'] : 	esc_html__( 'New title', 'text_domain' );
+
+		$icons_array = apply_filters( 'swp_button_options' , $icons_array );
+
+		$networks = new Array();
+		for( $i = 0; $i <= count( $icons_array['content'] ); $i++ ):
+
+			echo $icons_array['content'][$i];
+
+		endforeach;
+
+
 		?>
 		<p>
 			<label for = "<?php echo esc_attr( $this->get_field_id( 'title' ) ); ?>">
@@ -72,9 +83,6 @@ class Social_warfare_social_proof_widget extends WP_Widget {
 		</p>
 		<p>
 				<label> Pick a Network: </label>
-
-				<!--<input type = <?php $network['type']  ?> !-->
-
 		</p>
 		<?php
 	}
