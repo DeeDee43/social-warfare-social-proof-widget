@@ -81,7 +81,7 @@ class Social_warfare_social_proof_widget extends WP_Widget {
 						class="widefat"
 						id="<?php $icons_array['content'][$button]; ?>"
 						name="<?php $icons_array['content'][$button]['content']; ?>"
-						type="<?php $icons_array['content'][$button]['type']; ?>"
+						type="checkbox"
 						>
 					<?php
 					echo $icons_array['content'][$button]['content'];
