@@ -39,27 +39,23 @@ class Social_warfare_social_proof_widget extends WP_Widget {
 
 	function __construct() {
 		// Instantiate the parent object
-		parent::__construct( false, 'Social Warfare - Social Proof Widget' );
+		parent::__construct( false, 'Social Warfare: Social Proof Widget' );
 	}
 
 	function widget( $args, $instance ) {
 		extract ($args);
         $title = apply_filters( 'widget_title', $instance['title'] );
 		$icons_array = apply_filters( 'swp_button_options' , $icons_array );
-		//var_dump($icons_array);
+		var_dump($icons_array);
 
-		foreach( $icons_array[content] as $button ){
-			if($button[defalt] || $button[premium]){
-				$networks = array($button[content]); //does this need to be global to use in form function?
-			}
-		}
-		var_dump($networks);
+
 	}
 
 
 	function update( $new_instance, $old_instance ) {
 		$instance = $old_instance;
         $instance['title'] = strip_tags($new_instance['title']);
+
         return $instance;
 	}
 
@@ -76,7 +72,9 @@ class Social_warfare_social_proof_widget extends WP_Widget {
 		</p>
 		<p>
 				<label> Pick a Network: </label>
-				<select
+
+				<!--<input type = <?php $network['type']  ?> !-->
+
 		</p>
 		<?php
 	}
