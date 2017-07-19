@@ -77,8 +77,6 @@ class Social_warfare_social_proof_widget extends WP_Widget {
 				<label> Pick a Network: </label>
 				<?php
 				foreach( $icons_array['content'] as $button ){
-
-				if( $icons_array['content'][$button]['defalt'] || $icons_array['content'][$button]['premium'] ) {
 					?> <input
 						class="widefat"
 						id="<?php $icons_array['content'][$button]; ?>"
@@ -88,12 +86,7 @@ class Social_warfare_social_proof_widget extends WP_Widget {
 					<?php
 					echo $icons_array['content'][$button]['content'];
 					echo "<br />";?>
-
-				}
-
 			};
-
-
 		</p>
 		<?php
 	}
