@@ -65,12 +65,7 @@ class Social_warfare_social_proof_widget extends WP_Widget {
 
 		$icons_array = apply_filters( 'swp_button_options' , $icons_array );
 
-		$networks = new Array();
-		for( $i = 0; $i <= count( $icons_array['content'] ); $i++ ):
 
-			echo $icons_array['content'][$i];
-
-		endforeach;
 
 
 		?>
@@ -83,6 +78,25 @@ class Social_warfare_social_proof_widget extends WP_Widget {
 		</p>
 		<p>
 				<label> Pick a Network: </label>
+				<?php
+				for( $i = 1; $i <= count( $icons_array['content'] ); $i++ ){
+
+				if( $icons_array['content'][$i-1]['defalt'] || $icons_array['content'][$i]['premium'] ) {
+					?> <input
+						class="widefat"
+						id="<?php $icons_array['content'][$i]; ?>"
+						name="<?php $icons_array['content'][$i]['content']; ?>" 
+						type="<?php $icons_array['content'][$i]['type']; ?>"
+						>
+					<?php
+					echo $icons_array['content'][$i]['content'];
+					echo "<br />";
+					?>
+				}
+
+				};
+
+
 		</p>
 		<?php
 	}
