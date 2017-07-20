@@ -46,23 +46,18 @@ class Social_warfare_social_proof_widget extends WP_Widget {
 		extract ($args);
         $title = apply_filters( 'widget_title', $instance['title'] );
 
-
-
-
 	}
 
 
 	function update( $new_instance, $old_instance ) {
 		$instance = $old_instance;
         $instance['title'] = strip_tags($new_instance['title']);
-
         return $instance;
 	}
 
 	function form( $instance ) {
 		// Output admin widget options form
 		$title = ! empty( $instance['title'] ) ? $instance['title'] : 	esc_html__( 'New title', 'text_domain' );
-
 		$icons_array = apply_filters( 'swp_button_options' , $icons_array );
 
 		?>
@@ -79,8 +74,8 @@ class Social_warfare_social_proof_widget extends WP_Widget {
 				foreach( $icons_array['content'] as $button ){
 					?> <input
 						class="widefat"
-						id="<?php $button; ?>"
-						name="<?php $button['content']; ?>"
+						id="<?php echo esc_attr( $this->get_field_id( $button ); ?>"
+						name="<?php echo esc_attr( $this->get_field_name( $button['content'] ); ?>"
 						type="checkbox"
 						>
 					<?php
