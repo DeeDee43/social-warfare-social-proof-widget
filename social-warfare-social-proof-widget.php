@@ -74,17 +74,17 @@ class Social_warfare_social_proof_widget extends WP_Widget {
 
 		</p>
 		<p>
-				<label> Pick a Network: </label>
+				<label> Pick a Network: </label></br>
 				<?php
 				foreach( $icons_array['content'] as $button ){
 					?> <input
 						class="widefat"
-						id="<?php $icons_array['content'][$button]; ?>"
-						name="<?php $icons_array['content'][$button]['content']; ?>"
+						id="<?php $button; ?>"
+						name="<?php $button['content']; ?>"
 						type="checkbox"
 						>
 					<?php
-					echo $icons_array['content'][$button]['content'];
+					echo $button['content'];
 					echo "<br />";
 			};?>
 		</p>
