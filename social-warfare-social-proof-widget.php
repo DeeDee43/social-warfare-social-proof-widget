@@ -85,8 +85,8 @@ class Social_warfare_social_proof_widget extends WP_Widget {
 						>
 					<?php
 					echo $icons_array['content'][$button]['content'];
-					echo "<br />";?>
-			};
+					echo "<br />";
+			};?>
 		</p>
 		<?php
 	}
