@@ -45,7 +45,9 @@ class Social_warfare_social_proof_widget extends WP_Widget {
 	function widget( $args, $instance ) {
 		extract ($args);
         $title = apply_filters( 'widget_title', $instance['title'] );
+
 		echo $title;
+
 
 	}
 
@@ -75,19 +77,20 @@ class Social_warfare_social_proof_widget extends WP_Widget {
 				<label> Pick a Network: </label></br>
 				<?php
 				foreach( $icons_array['content'] as $button ){
-					$instance['network'] = $button;
-					$instance['networkName'] = $button['content'];
+					 $instance[$button] ;
 
-					?> <input
+
+					/*?> <input
 						class="widefat"
 						id="<?php echo esc_attr( $this->get_field_id( 'network' ); ?>"
 						name="<?php echo esc_attr( $this->get_field_name( 'networkName'); ?>"
 						type="checkbox"
 						>
-					<?php
-					echo $instance['networkName'];
+					<?php*/
+					echo $instance[$button];
 					echo "<br />";
 			};?>
+
 		</p>
 		<?php
 	}
