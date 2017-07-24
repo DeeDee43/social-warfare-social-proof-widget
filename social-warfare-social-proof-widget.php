@@ -53,7 +53,7 @@ class Social_warfare_social_proof_widget extends WP_Widget {
 	function update( $new_instance, $old_instance ) {
 		$instance = $old_instance;
         $instance['title'] = strip_tags($new_instance['title']);
-		$instance['checked'] = strip_tags($new_instance['checked'])
+		$instance['network'] = strip_tags($new_instance['network'])
         return $instance;
 	}
 
