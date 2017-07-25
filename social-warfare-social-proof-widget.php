@@ -44,8 +44,13 @@ class Social_warfare_social_proof_widget extends WP_Widget {
 
 	function widget( $args, $instance ) {
 		extract ($args);
-		//get widget title then grab custom title from this instance
+
         $title = apply_filters( 'widget_title', $instance['title'] );
+
+		//network instances
+		$googlePlus = $instance['googlePlus'];
+		$twitter = $instance['twitter'];
+		$facebook = $instance['facebook'];
 
 		echo $before_widget;
 		echo $before_title . $title . $after_title;
@@ -59,13 +64,19 @@ class Social_warfare_social_proof_widget extends WP_Widget {
 	function update( $new_instance, $old_instance ) {
 		$instance = $old_instance;
         $instance['title'] = strip_tags($new_instance['title']);
+		$instance['googlePlus'] = strip_tags($new_instance['googlePlus']);
+		$instance['twitter'] = strip_tags($new_instance['twitter']);
+		$instance['facebook'] = strip_tags($new_instance['facebook']);
+		$instance['linkedIn'] = strip_tags($new_instance['linkedIn']);
+		$instance['pinterest'] = strip_tags($new_instance['pinterest']);
         return $instance;
 	}
 
 	function form( $instance ) {
 		// Output admin widget options form
 
-		$title = esc_attr($instance['title']);;
+		$title = esc_attr($instance['title']);
+		$googlePlus = $instance['googlePlus'];
 
 		$icons_array = apply_filters( 'swp_button_options' , $icons_array );
 
@@ -78,57 +89,17 @@ class Social_warfare_social_proof_widget extends WP_Widget {
 
 		</p>
 		<p>
-				<label> Pick a Network: </label></br>
+			<label> Pick a Network: </label></br>
+			<?php
+			foreach( $icons_array['content'] as $button ) :
+				//var_dump($button['content']);
+				?>
+				<input class="widefat" id="<?php echo $button;?>" name="<?php echo esc_attr($button['content']) ?>" type="checkbox" value= '0'>
 				<?php
-				foreach( $icons_array['content'] as $button ){
-					//var_dump($button['content']);
-					/*if($button['content'] == "Google Plus" ) {
-						?> <input
-							class="widefat"
-							id="<?php echo esc_attr( $this->get_field_id( 'googlePlus' ); ?>"
-							name="<?php echo esc_attr( $this->get_field_name( 'Google Plus'); ?>"
-							type="checkbox"
-							>
-							<?php
-					}elseif ($button == 'twitter') {
-						?> <input
-							class="widefat"
-							id="<?php echo esc_attr( $this->get_field_id( 'twitter' ); ?>"
-							name="<?php echo esc_attr( $this->get_field_name( 'Twitter'); ?>"
-							type="checkbox"
-							>
-						<?php
-					}elseif($button == 'facebook') {
-						?> <input
-							class="widefat"
-							id="<?php echo esc_attr( $this->get_field_id( 'facebook' ); ?>"
-							name="<?php echo esc_attr( $this->get_field_name( 'Facebook'); ?>"
-							type="checkbox"
-							>
-						<?php
-					}elseif($button == 'linkedIn') {
-						?> <input
-							class="widefat"
-							id="<?php echo esc_attr( $this->get_field_id( 'linkedIn' ); ?>"
-							name="<?php echo esc_attr( $this->get_field_name( 'linkedIn'); ?>"
-							type="checkbox"
-							>
-						<?php
-					}elseif($button == 'pinterest') {
-						?> <input
-							class="widefat"
-							id="<?php echo esc_attr( $this->get_field_id( 'pinterest' ); ?>"
-							name="<?php echo esc_attr( $this->get_field_name( 'Pinterest'); ?>"
-							type="checkbox"
-							>
-						<?php
-					}*/
-
-					echo $button['content'];
-					echo "<br />";
-			};
+				echo $button['content'];
+				echo "<br />";
+			endforeach;
 			?>
-
 		</p>
 		<?php
 	}
