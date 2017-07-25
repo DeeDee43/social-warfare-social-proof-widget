@@ -44,9 +44,14 @@ class Social_warfare_social_proof_widget extends WP_Widget {
 
 	function widget( $args, $instance ) {
 		extract ($args);
+		//get widget title then grab custom title from this instance
         $title = apply_filters( 'widget_title', $instance['title'] );
-		echo $title;
 
+		echo $before_widget;
+		echo $before_title . $title . $after_title;
+		echo $after_widget;
+
+		var_dump($instance);
 
 	}
 
@@ -59,7 +64,8 @@ class Social_warfare_social_proof_widget extends WP_Widget {
 
 	function form( $instance ) {
 		// Output admin widget options form
-		$title = ! empty( $instance['title'] ) ? $instance['title'] : esc_html__( 'New title', 'text_domain' );
+
+		$title = esc_attr($instance['title']);;
 
 		$icons_array = apply_filters( 'swp_button_options' , $icons_array );
 
@@ -75,165 +81,49 @@ class Social_warfare_social_proof_widget extends WP_Widget {
 				<label> Pick a Network: </label></br>
 				<?php
 				foreach( $icons_array['content'] as $button ){
-					switch ($button) {
-						case 'googlePlus':
-							?> <input
-								class="widefat"
-								id="<?php echo esc_attr( $this->get_field_id( 'googlePlus' ); ?>"
-								name="<?php echo esc_attr( $this->get_field_name( 'Google Plus'); ?>"
-								type="checkbox"
-								>
-								<?php
-							break;
-						case 'twitter':
-							?> <input
-								class="widefat"
-								id="<?php echo esc_attr( $this->get_field_id( 'twitter' ); ?>"
-								name="<?php echo esc_attr( $this->get_field_name( 'Twitter'); ?>"
-								type="checkbox"
-								>
-								<?php
-							break;
-							case 'facebook':
-								?> <input
-									class="widefat"
-									id="<?php echo esc_attr( $this->get_field_id( 'facebook' ); ?>"
-									name="<?php echo esc_attr( $this->get_field_name( 'Facebook'); ?>"
-									type="checkbox"
-									>
-									<?php
-								break;
-							case 'linkedIn':
-								?> <input
-									class="widefat"
-									id="<?php echo esc_attr( $this->get_field_id( 'linkedIn' ); ?>"
-									name="<?php echo esc_attr( $this->get_field_name( 'LinkedIn'); ?>"
-									type="checkbox"
-									>
-									<?php
-								break;
-							case 'pinterest':
-								?> <input
-									class="widefat"
-									id="<?php echo esc_attr( $this->get_field_id( 'pinterest' ); ?>"
-									name="<?php echo esc_attr( $this->get_field_name( 'Pinterest'); ?>"
-									type="checkbox"
-									>
-									<?php
-								break;
-							/*case 'twitter':
-								?> <input
-									class="widefat"
-									id="<?php echo esc_attr( $this->get_field_id( 'twitter' ); ?>"
-									name="<?php echo esc_attr( $this->get_field_name( 'twitter'); ?>"
-									type="checkbox"
-									>
-									<?php
-								break;
-							case 'twitter':
-								?> <input
-									class="widefat"
-									id="<?php echo esc_attr( $this->get_field_id( 'twitter' ); ?>"
-									name="<?php echo esc_attr( $this->get_field_name( 'twitter'); ?>"
-									type="checkbox"
-									>
-									<?php
-								break;
-							case 'twitter':
-								?> <input
-									class="widefat"
-									id="<?php echo esc_attr( $this->get_field_id( 'twitter' ); ?>"
-									name="<?php echo esc_attr( $this->get_field_name( 'twitter'); ?>"
-									type="checkbox"
-									>
-									<?php
-								break;
-							case 'twitter':
-								?> <input
-									class="widefat"
-									id="<?php echo esc_attr( $this->get_field_id( 'twitter' ); ?>"
-									name="<?php echo esc_attr( $this->get_field_name( 'twitter'); ?>"
-									type="checkbox"
-									>
-									<?php
-								break;
-							case 'twitter':
-								?> <input
-									class="widefat"
-									id="<?php echo esc_attr( $this->get_field_id( 'twitter' ); ?>"
-									name="<?php echo esc_attr( $this->get_field_name( 'twitter'); ?>"
-									type="checkbox"
-									>
-									<?php
-								break;
-							case 'twitter':
-								?> <input
-									class="widefat"
-									id="<?php echo esc_attr( $this->get_field_id( 'twitter' ); ?>"
-									name="<?php echo esc_attr( $this->get_field_name( 'twitter'); ?>"
-									type="checkbox"
-									>
-									<?php
-								break;
-							case 'twitter':
-								?> <input
-									class="widefat"
-									id="<?php echo esc_attr( $this->get_field_id( 'twitter' ); ?>"
-									name="<?php echo esc_attr( $this->get_field_name( 'twitter'); ?>"
-									type="checkbox"
-									>
-									<?php
-								break;
-							case 'twitter':
-								?> <input
-									class="widefat"
-									id="<?php echo esc_attr( $this->get_field_id( 'twitter' ); ?>"
-									name="<?php echo esc_attr( $this->get_field_name( 'twitter'); ?>"
-									type="checkbox"
-									>
-									<?php
-								break;
-							case 'twitter':
-								?> <input
-									class="widefat"
-									id="<?php echo esc_attr( $this->get_field_id( 'twitter' ); ?>"
-									name="<?php echo esc_attr( $this->get_field_name( 'twitter'); ?>"
-									type="checkbox"
-									>
-									<?php
-								break;
-							case 'twitter':
-								?> <input
-									class="widefat"
-									id="<?php echo esc_attr( $this->get_field_id( 'twitter' ); ?>"
-									name="<?php echo esc_attr( $this->get_field_name( 'twitter'); ?>"
-									type="checkbox"
-									>
-									<?php
-								break;
-							case 'twitter':
-								?> <input
-									class="widefat"
-									id="<?php echo esc_attr( $this->get_field_id( 'twitter' ); ?>"
-									name="<?php echo esc_attr( $this->get_field_name( 'twitter'); ?>"
-									type="checkbox"
-									>
-									<?php
-								break;
-							case 'twitter':
-								?> <input
-									class="widefat"
-									id="<?php echo esc_attr( $this->get_field_id( 'twitter' ); ?>"
-									name="<?php echo esc_attr( $this->get_field_name( 'twitter'); ?>"
-									type="checkbox"
-									>
-									<?php
-								break;
-								*/
-						default:
-							echo "Pick a Network"
-							break;
-					}
+					//var_dump($button['content']);
+					/*if($button['content'] == "Google Plus" ) {
+						?> <input
+							class="widefat"
+							id="<?php echo esc_attr( $this->get_field_id( 'googlePlus' ); ?>"
+							name="<?php echo esc_attr( $this->get_field_name( 'Google Plus'); ?>"
+							type="checkbox"
+							>
+							<?php
+					}elseif ($button == 'twitter') {
+						?> <input
+							class="widefat"
+							id="<?php echo esc_attr( $this->get_field_id( 'twitter' ); ?>"
+							name="<?php echo esc_attr( $this->get_field_name( 'Twitter'); ?>"
+							type="checkbox"
+							>
+						<?php
+					}elseif($button == 'facebook') {
+						?> <input
+							class="widefat"
+							id="<?php echo esc_attr( $this->get_field_id( 'facebook' ); ?>"
+							name="<?php echo esc_attr( $this->get_field_name( 'Facebook'); ?>"
+							type="checkbox"
+							>
+						<?php
+					}elseif($button == 'linkedIn') {
+						?> <input
+							class="widefat"
+							id="<?php echo esc_attr( $this->get_field_id( 'linkedIn' ); ?>"
+							name="<?php echo esc_attr( $this->get_field_name( 'linkedIn'); ?>"
+							type="checkbox"
+							>
+						<?php
+					}elseif($button == 'pinterest') {
+						?> <input
+							class="widefat"
+							id="<?php echo esc_attr( $this->get_field_id( 'pinterest' ); ?>"
+							name="<?php echo esc_attr( $this->get_field_name( 'Pinterest'); ?>"
+							type="checkbox"
+							>
+						<?php
+					}*/
+
 					echo $button['content'];
 					echo "<br />";
 			};
