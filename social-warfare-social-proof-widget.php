@@ -94,7 +94,7 @@ class Social_warfare_social_proof_widget extends WP_Widget {
 			foreach( $icons_array['content'] as $button ) :
 				//var_dump($button['content']);
 				?>
-				<input class="widefat" id="<?php echo $button;?>" name="<?php echo esc_attr($button['content']) ?>" type="checkbox" value= '0'>
+				<input class="widefat" id="<?php echo $button;?>" name="<?php echo esc_attr($button['content']) ?>" type="checkbox" value= '0'<?php checked($button,1);  ?>>
 				<?php
 				echo $button['content'];
 				echo "<br />";
