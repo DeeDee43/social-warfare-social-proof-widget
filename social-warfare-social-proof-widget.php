@@ -46,67 +46,22 @@ class Social_warfare_social_proof_widget extends WP_Widget {
 		extract ($args);
 
         $title = apply_filters( 'widget_title', $instance['title'] );
-
-		//network instances
-		$googlePlus = $instance['googlePlus'];
-		$twitter = $instance['twitter'];
-		$facebook = $instance['facebook'];
-		$linkedIn = $instance['linkedIn'];
-		$pinterest= $instance['pinterest'];
-		$stumbleupon = $instance['stumbleupon'];
-		$tumblr = $instance['tumblr'];
-		$reddit = $instance['reddit'];
-		$yummly = $instance['yummly'];
-		$buffer = $instance['buffer'];
-		$hacker_news = $instance['hacker_news'];
-		$flipboard = $instance['flipboard'];
-
-
-
 		echo $before_widget;
 		echo $before_title . $title . $after_title;
 		echo $after_widget;
 
 		//var_dump($instance);
-
 	}
-
 
 	function update( $new_instance, $old_instance ) {
 		$instance = $old_instance;
         $instance['title'] = strip_tags($new_instance['title']);
-		$instance['googlePlus'] = strip_tags($new_instance['googlePlus']);
-		$instance['twitter'] = strip_tags($new_instance['twitter']);
-		$instance['facebook'] = strip_tags($new_instance['facebook']);
-		$instance['linkedIn'] = strip_tags($new_instance['linkedIn']);
-		$instance['pinterest'] = strip_tags($new_instance['pinterest']);
-		$instance['stumbleupon'] = strip_tags($new_instance['stumbleupon']);
-		$instance['tumblr'] = strip_tags($new_instance['tumblr']);
-		$instance['reddit'] = strip_tags($new_instance['reddit']);
-		$instance['yummly'] = strip_tags($new_instance['yummly']);
-		$instance['buffer'] = strip_tags($new_instance['buffer']);
-		$instance['hacker_news'] = strip_tags($new_instance['hacker_news']);
-		$instance['flipboard'] = strip_tags($new_instance['flipboard']);
         return $instance;
 	}
 
 	function form( $instance ) {
 		// Output admin widget options form
-
 		$title = esc_attr( $instance['title'] );
-		/*
-		$twitter = esc_attr( $instance['twitter'] );
-		$facebook = esc_attr($instance['facebook']);
-		$linkedIn = esc_attr($instance['linkedIn']);
-		$pinterest= esc_attr($instance['pinterest']);
-		$stumbleupon = $instance['stumbleupon'];
-		$tumblr = $instance['tumblr'];
-		$reddit = $instance['reddit'];
-		$yummly = $instance['yummly'];
-		$buffer = $instance['buffer'];
-		$hacker_news = $instance['hacker_news'];
-		$flipboard = $instance['flipboard'];
-		*/
 		$icons_array = apply_filters( 'swp_button_options' , $icons_array );
 
 		?>
@@ -115,23 +70,23 @@ class Social_warfare_social_proof_widget extends WP_Widget {
 				<?php esc_attr_e( 'Title:', 'text_domain' ); ?>
 			</label>
 			<input class="widefat" id="<?php echo esc_attr( $this->get_field_id( 'title' ) ); ?>" name="<?php echo esc_attr( $this->get_field_name( 'title' ) ); ?>" type="text" value="<?php echo esc_attr( $title ); ?>">
-
 		</p>
 		<p>
 			<label> Pick a Network: </label></br>
 			<?php
+
 			foreach( $icons_array['content'] as $button => $network ) :
-
-				var_dump($button);
-				var_dump($network);
-
-				?>
-				<input class="widefat"
-					id="<?php echo $this->get_field_id('$button');?>" name="<?php echo $this->get_field_name('$button'); ?>" type="checkbox"
-					value= "1"  <?php checked($button,1 ); ?> >
-				<?php
-				echo $network['content'];
-				echo "<br />";
+			?>
+			<input
+			class="widefat"
+			id="<?php echo $button;?>"
+			name="<?php echo esc_attr($network['content']) ?>"
+			type="checkbox"
+			value= '0'<?php checked($button,1); ?>
+			>
+			<?php
+			echo $network['content'];
+			echo "<br />";
 			endforeach;
 			?>
 		</p>
