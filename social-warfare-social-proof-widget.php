@@ -44,10 +44,15 @@ class Social_warfare_social_proof_widget extends WP_Widget {
 
 	function widget( $args, $instance ) {
 		extract ($args);
-
+		$icons_array = apply_filters( 'swp_button_options' , $icons_array );
         $title = apply_filters( 'widget_title', $instance['title'] );
 		echo $before_widget;
 		echo $before_title . $title . $after_title;
+
+		foreach( $icons_array['content'] as $button => $network ) :
+			$instance[$button]
+		endforeach;
+
 		echo $after_widget;
 
 		//var_dump($instance);
@@ -56,6 +61,12 @@ class Social_warfare_social_proof_widget extends WP_Widget {
 	function update( $new_instance, $old_instance ) {
 		$instance = $old_instance;
         $instance['title'] = strip_tags($new_instance['title']);
+
+		$icons_array = apply_filters( 'swp_button_options' , $icons_array );
+		foreach( $icons_array['content'] as $button => $network ) :
+			$instance[$button] = $new_instance[$button];
+		endforeach;
+
         return $instance;
 	}
 
@@ -91,6 +102,7 @@ class Social_warfare_social_proof_widget extends WP_Widget {
 			?>
 		</p>
 		<?php
+		var_dump($instance);
 	}
 }
 
