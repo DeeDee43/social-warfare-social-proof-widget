@@ -91,13 +91,14 @@ class Social_warfare_social_proof_widget extends WP_Widget {
 		<p>
 			<label> Pick a Network: </label></br>
 			<?php
-			foreach( $icons_array['content'] as $button ) :
-				//var_dump($button['content']);
+			foreach( $icons_array['content'] as $button => $network ) :
+				//var_dump($value);
 				?>
-				<input class="widefat" id="<?php echo $button;?>" name="<?php echo esc_attr($button['content']) ?>" type="checkbox" value= '0'<?php checked($button,1);  ?>>
+				<input class="widefat" id="<?php echo $button;?>" name="<?php echo esc_attr($network['content']) ?>" type="checkbox" value= '0'<?php checked($button,1);  ?>>
 				<?php
-				echo $button['content'];
+				echo $network['content'];
 				echo "<br />";
+
 			endforeach;
 			?>
 		</p>
