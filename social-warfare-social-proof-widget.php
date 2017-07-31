@@ -49,9 +49,9 @@ class Social_warfare_social_proof_widget extends WP_Widget {
 		echo $before_widget;
 		echo $before_title . $title . $after_title;
 
-		foreach( $icons_array['content'] as $button => $network ) :
-			$instance[$button]
-		endforeach;
+		//foreach( $icons_array['content'] as $button => $network ) :
+			//$instance[$button]
+		//endforeach;
 
 		echo $after_widget;
 
@@ -61,11 +61,8 @@ class Social_warfare_social_proof_widget extends WP_Widget {
 	function update( $new_instance, $old_instance ) {
 		$instance = $old_instance;
         $instance['title'] = strip_tags($new_instance['title']);
-
-		$icons_array = apply_filters( 'swp_button_options' , $icons_array );
-		foreach( $icons_array['content'] as $button => $network ) :
-			$instance[$button] = $new_instance[$button];
-		endforeach;
+		$instance['button'] = strip_tags($new_instance['button']);
+		$instance['network'] = strip_tags($new_instance['network']);
 
         return $instance;
 	}
@@ -87,13 +84,15 @@ class Social_warfare_social_proof_widget extends WP_Widget {
 			<?php
 
 			foreach( $icons_array['content'] as $button => $network ) :
+			 	$instance['button'] = $button;
+				$instance['network'] = $network['content'];
 			?>
 			<input
 			class="widefat"
-			id="<?php echo $button;?>"
-			name="<?php echo esc_attr($network['content']) ?>"
+			id="<?php echo esc_attr( $this->get_field_id( 'button' ) );?>"
+			name="<?php echo esc_attr( $this->get_field_name( 'network' ) ) ?>"
 			type="checkbox"
-			value= '0'<?php checked($button,1); ?>
+			value= '0'<?php checked( $button ,1); ?>
 			>
 			<?php
 			echo $network['content'];
