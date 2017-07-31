@@ -48,11 +48,12 @@ class Social_warfare_social_proof_widget extends WP_Widget {
         $title = apply_filters( 'widget_title', $instance['title'] );
 		echo $before_widget;
 		echo $before_title . $title . $after_title;
-
-		//foreach( $icons_array['content'] as $button => $network ) :
-			//$instance[$button]
-		//endforeach;
-
+		echo $instance['googlePlus'];
+	/*
+		if(!empty($instance[googlePlus]) && isChecked() ) :
+			echo $googlePlussitewide_shares;
+		endif;
+	*/
 		echo $after_widget;
 
 		//var_dump($instance);
@@ -87,18 +88,17 @@ class Social_warfare_social_proof_widget extends WP_Widget {
 			 	$instance['button'] = $button;
 				$instance['network'] = $network['content'];
 			?>
-			<input
-			class="widefat"
-			id="<?php echo esc_attr( $this->get_field_id( 'button' ) );?>"
-			name="<?php echo esc_attr( $this->get_field_name( 'network' ) ) ?>"
-			type="checkbox"
-			value= '0'<?php checked( $button ,1); ?>
-			>
-			<?php
-			echo $network['content'];
-			echo "<br />";
-			endforeach;
-			?>
+				<input class="widefat"
+				id="<?php echo $instance['button'];?>"
+				name="<?php echo esc_attr($network['content']) ?>"
+				type="checkbox"
+				value= "0" <?php checked($instance['button'], 1); ?>
+				>
+				<?php
+				echo $network['content'];
+				echo "<br />";
+				endforeach;
+				?>
 		</p>
 		<?php
 		var_dump($instance);
