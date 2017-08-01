@@ -45,25 +45,31 @@ class Social_warfare_social_proof_widget extends WP_Widget {
 	function widget( $args, $instance ) {
 		extract ($args);
 		$icons_array = apply_filters( 'swp_button_options' , $icons_array );
+
         $title = apply_filters( 'widget_title', $instance['title'] );
 		echo $before_widget;
 		echo $before_title . $title . $after_title;
-		echo $instance['googlePlus'];
-	/*
-		if(!empty($instance[googlePlus]) && isChecked() ) :
-			echo $googlePlussitewide_shares;
-		endif;
-	*/
+
+		foreach( $icons_array['content'] as $button => $network ) :
+			$instance['button'] = $button;
+			$instance['network'] = $network['content'];
+		endforeach;
+
+		var_dump($instance);
 		echo $after_widget;
 
-		//var_dump($instance);
+
 	}
 
 	function update( $new_instance, $old_instance ) {
 		$instance = $old_instance;
         $instance['title'] = strip_tags($new_instance['title']);
-		$instance['button'] = strip_tags($new_instance['button']);
-		$instance['network'] = strip_tags($new_instance['network']);
+		foreach( $icons_array['content'] as $button => $network ) :
+			$instance['button'] = $button;
+			$instance['network'] = $network;
+			$instance['button'] = strip_tags($new_instance['button']);
+			$instance['network'] = strip_tags($new_instance['network']);
+		endforeach;
 
         return $instance;
 	}
@@ -72,7 +78,6 @@ class Social_warfare_social_proof_widget extends WP_Widget {
 		// Output admin widget options form
 		$title = esc_attr( $instance['title'] );
 		$icons_array = apply_filters( 'swp_button_options' , $icons_array );
-
 		?>
 		<p>
 			<label for = "<?php echo esc_attr( $this->get_field_id( 'title' ) ); ?>">
@@ -87,21 +92,21 @@ class Social_warfare_social_proof_widget extends WP_Widget {
 			foreach( $icons_array['content'] as $button => $network ) :
 			 	$instance['button'] = $button;
 				$instance['network'] = $network['content'];
+
 			?>
-				<input class="widefat"
-				id="<?php echo $instance['button'];?>"
-				name="<?php echo esc_attr($network['content']) ?>"
-				type="checkbox"
-				value= "0" <?php checked($instance['button'], 1); ?>
+				<input class="widefat" type="checkbox"
+				id="<?php echo esc_attr( $this->get_field_id('button') );?>"
+				name="<?php echo esc_attr( $this->get_field_name('network') );?>[]"
+				value= "<?php echo $button; ?>"
 				>
 				<?php
 				echo $network['content'];
 				echo "<br />";
 				endforeach;
+				var_dump[$instance];
 				?>
 		</p>
 		<?php
-		var_dump($instance);
 	}
 }
 
