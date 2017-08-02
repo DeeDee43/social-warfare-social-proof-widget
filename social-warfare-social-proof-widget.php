@@ -103,7 +103,7 @@ class Social_warfare_social_proof_widget extends WP_Widget {
 				echo "<br />";
 
 			endforeach;
-				echo $instance;
+				//echo $instance;
 				?>
 		</p>
 		<?php
