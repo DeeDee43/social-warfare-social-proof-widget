@@ -50,11 +50,12 @@ class Social_warfare_social_proof_widget extends WP_Widget {
 		echo $before_widget;
 		echo $before_title . $title . $after_title;
 
-		foreach( $icons_array['content'] as $button => $network ) :
+	/*	foreach( $icons_array['content'] as $button => $network ) :
 			$instance['button'] = $button;
 			$instance['network'] = $network['content'];
-		endforeach;
 
+		endforeach;
+		*/
 		var_dump($instance);
 		echo $after_widget;
 
@@ -66,9 +67,8 @@ class Social_warfare_social_proof_widget extends WP_Widget {
         $instance['title'] = strip_tags($new_instance['title']);
 		foreach( $icons_array['content'] as $button => $network ) :
 			$instance['button'] = $button;
-			$instance['network'] = $network;
 			$instance['button'] = strip_tags($new_instance['button']);
-			$instance['network'] = strip_tags($new_instance['network']);
+
 		endforeach;
 
         return $instance;
@@ -78,6 +78,7 @@ class Social_warfare_social_proof_widget extends WP_Widget {
 		// Output admin widget options form
 		$title = esc_attr( $instance['title'] );
 		$icons_array = apply_filters( 'swp_button_options' , $icons_array );
+
 		?>
 		<p>
 			<label for = "<?php echo esc_attr( $this->get_field_id( 'title' ) ); ?>">
@@ -92,18 +93,14 @@ class Social_warfare_social_proof_widget extends WP_Widget {
 			foreach( $icons_array['content'] as $button => $network ) :
 			 	$instance['button'] = $button;
 				$instance['network'] = $network['content'];
-
 			?>
-				<input class="widefat" type="checkbox"
-				id="<?php echo esc_attr( $this->get_field_id('button') );?>"
-				name="<?php echo esc_attr( $this->get_field_name('network') );?>[]"
-				value= "<?php echo $button; ?>"
-				>
+				<input class="widefat" type="checkbox" id="<?php echo esc_attr( $this->get_field_id('button') );?>" name="<?php echo esc_attr( $this->get_field_name('button') );?>" value= "<?php echo esc_attr($button); ?>"	<?php checked($button, 1);?> >
 				<?php
 				echo $network['content'];
 				echo "<br />";
-				endforeach;
-				var_dump[$instance];
+
+			endforeach;
+
 				?>
 		</p>
 		<?php
