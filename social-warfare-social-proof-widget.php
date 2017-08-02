@@ -45,17 +45,17 @@ class Social_warfare_social_proof_widget extends WP_Widget {
 	function widget( $args, $instance ) {
 		extract ($args);
 		$icons_array = apply_filters( 'swp_button_options' , $icons_array );
+		$title = apply_filters( 'widget_title', $instance['title'] );
 
-        $title = apply_filters( 'widget_title', $instance['title'] );
 		echo $before_widget;
 		echo $before_title . $title . $after_title;
 
-	/*	foreach( $icons_array['content'] as $button => $network ) :
-			$instance['button'] = $button;
-			$instance['network'] = $network['content'];
-
+		foreach( $icons_array['content'] as $button => $network ) :
+			if(checked($button,1)):
+				echo $network['content'].'<br />';
+			endif;
 		endforeach;
-		*/
+
 		var_dump($instance);
 		echo $after_widget;
 
@@ -65,12 +65,12 @@ class Social_warfare_social_proof_widget extends WP_Widget {
 	function update( $new_instance, $old_instance ) {
 		$instance = $old_instance;
         $instance['title'] = strip_tags($new_instance['title']);
+		$instance['button'] = strip_tags($new_instance['button']);
 		foreach( $icons_array['content'] as $button => $network ) :
-			$instance['button'] = $button;
-			$instance['button'] = strip_tags($new_instance['button']);
-
+			if(checked($button,1)):
+				echo $network['content'].'<br />';
+			endif;
 		endforeach;
-
         return $instance;
 	}
 
@@ -94,16 +94,20 @@ class Social_warfare_social_proof_widget extends WP_Widget {
 			 	$instance['button'] = $button;
 				$instance['network'] = $network['content'];
 			?>
-				<input class="widefat" type="checkbox" id="<?php echo esc_attr( $this->get_field_id('button') );?>" name="<?php echo esc_attr( $this->get_field_name('button') );?>" value= "<?php echo esc_attr($button); ?>"	<?php checked($button, 1);?> >
+				<input class="widefat" type="checkbox" id="<?php echo esc_attr( $this->get_field_id('button') );?>" name="<?php echo esc_attr( $this->get_field_name('button') );?>" value= "<?php echo esc_attr($button); ?>" <?php if(checked($button,1)):
+					echo 'checked = "checked"';
+				endif; ?>
+				 >
 				<?php
 				echo $network['content'];
 				echo "<br />";
 
 			endforeach;
-
+				echo $instance;
 				?>
 		</p>
 		<?php
+
 	}
 }
 
