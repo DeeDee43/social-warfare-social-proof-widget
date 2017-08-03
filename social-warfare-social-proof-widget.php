@@ -50,13 +50,11 @@ class Social_warfare_social_proof_widget extends WP_Widget {
 		echo $before_widget;
 		echo $before_title . $title . $after_title;
 
-		foreach( $icons_array['content'] as $button => $network ) :
-			if(checked($button,1)):
-				echo $network['content'].'<br />';
-			endif;
-		endforeach;
+		//foreach( $icons_array['content'] as $button => $network ) :
 
-		var_dump($instance);
+		//endforeach;
+
+		//var_dump($instance);
 		echo $after_widget;
 
 
@@ -65,11 +63,9 @@ class Social_warfare_social_proof_widget extends WP_Widget {
 	function update( $new_instance, $old_instance ) {
 		$instance = $old_instance;
         $instance['title'] = strip_tags($new_instance['title']);
-		$instance['button'] = strip_tags($new_instance['button']);
+
 		foreach( $icons_array['content'] as $button => $network ) :
-			if(checked($button,1)):
-				echo $network['content'].'<br />';
-			endif;
+			$instance['button'] = strip_tags($new_instance['button']);
 		endforeach;
         return $instance;
 	}
@@ -78,7 +74,7 @@ class Social_warfare_social_proof_widget extends WP_Widget {
 		// Output admin widget options form
 		$title = esc_attr( $instance['title'] );
 		$icons_array = apply_filters( 'swp_button_options' , $icons_array );
-
+		$title = ! empty( $instance['title'] ) ? $instance['title'] : 	esc_html__( 'New title', 'text_domain' );
 		?>
 		<p>
 			<label for = "<?php echo esc_attr( $this->get_field_id( 'title' ) ); ?>">
@@ -98,10 +94,11 @@ class Social_warfare_social_proof_widget extends WP_Widget {
 					echo 'checked = "checked"';
 				endif; ?>
 				 >
-				<?php
-				echo $network['content'];
-				echo "<br />";
+				<label for = "<?php echo esc_attr( $this->get_field_id('button') );?>">
+					<?php echo $network['content'] . "<br />"; ?>
+				</label>
 
+					<?php
 			endforeach;
 				//echo $instance;
 				?>
